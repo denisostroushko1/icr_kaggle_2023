@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Train Data Exploration</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Train Explorer_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Train Explorer_files/libs/quarto-html/quarto.js"></script>
+<script src="Train Explorer_files/libs/quarto-html/popper.min.js"></script>
+<script src="Train Explorer_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Train Explorer_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Train Explorer_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Train Explorer_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Train Explorer_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Train Explorer_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Train Explorer_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Train Data Exploration</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 500</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 500</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 445</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+408  92 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    0     1 
+0.816 0.184 </code></pre>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   Class
+EJ    0   1
+  A 157  24
+  B 251  68</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Class
+EJ      0     1
+  A 0.314 0.048
+  B 0.502 0.136</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  EJ        n     p
+  &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;
+1 A       181 0.133
+2 B       319 0.213</code></pre>
+</div>
+</div>
+<section id="loop-over-all-variables-and-make-densities-by-outcome-class" class="level1">
+<h1>Loop over all variables and make densities by outcome class</h1>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-8.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-9.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-10.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-11.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-12.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-13.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-14.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-15.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-16.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-17.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-18.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-19.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-20.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-21.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-22.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-23.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-24.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-25.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-26.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-27.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-28.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-29.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-30.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-31.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-32.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-33.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-34.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-35.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-36.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-37.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-38.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-39.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-40.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-41.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-42.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-43.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-44.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-45.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-46.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-47.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-48.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-49.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-50.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-51.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-52.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-53.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-54.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-55.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-56.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-57.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-58.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-59.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-60.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-61.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-62.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-63.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-64.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-65.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-66.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-67.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-68.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-69.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-70.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-71.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-72.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-73.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-74.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-75.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-76.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-77.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-78.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-79.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-80.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-81.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-82.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-83.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-84.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-85.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-86.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-87.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-88.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-89.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-90.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-91.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-92.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-93.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-94.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-95.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-96.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-97.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-98.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-99.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-100.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-101.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-102.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-103.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-104.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-105.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-106.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-107.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-108.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-109.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-110.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-111.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-112.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-113.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-114.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-115.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-116.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-117.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-118.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-119.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-120.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-121.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-122.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-123.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-124.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-125.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-126.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-127.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-128.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-129.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-130.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-131.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-132.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-133.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-134.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-135.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-136.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-137.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-138.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-139.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-140.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-141.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-142.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-143.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-144.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-145.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-146.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-147.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-148.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-149.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-150.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-151.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-152.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-153.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-154.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-155.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-156.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-157.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-158.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-159.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-160.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-161.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-162.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-163.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-164.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-165.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-166.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-167.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Train-Explorer_files/figure-html/unnamed-chunk-5-168.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<!--
+# Log Scale Plots 
+-->
+<div class="cell">
+
+</div>
+<!--
+# Looking for correlations with Log transformed variables 
+-->
+<div class="cell">
+
+</div>
+</section>
+<section id="correlation-matrix" class="level1">
+<h1>Correlation Matrix</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.5261156 0.5261156 0.5265639 0.5265639 0.5406872 0.5406872 0.5483486
+ [8] 0.5483486 0.5562930 0.5562930 0.5738298 0.5738298 0.5847785 0.5847785
+[15] 0.6447382 0.6447382 0.6592126 0.6592126 0.6620835 0.6620835 0.6752070
+[22] 0.6752070 0.6790492 0.6790492 0.6794676 0.6794676 0.6832506 0.6832506
+[29] 0.6863436 0.6863436 0.7033566 0.7033566 0.7097173 0.7097173 0.7120570
+[36] 0.7120570 0.7239188 0.7239188 0.7314381 0.7314381 0.7322799 0.7322799
+[43] 0.7336788 0.7336788 0.7353712 0.7353712 0.7370739 0.7370739 0.7405099
+[50] 0.7405099 0.7538976 0.7538976 0.7562529 0.7562529 0.7592296 0.7592296
+[57] 0.7642202 0.7642202 0.7669110 0.7669110 0.7782371 0.7782371 0.7806234
+[64] 0.7806234 0.7823191 0.7823191 0.7907365 0.7907365 0.7981699 0.7981699
+[71] 0.8034850 0.8034850 0.8114308 0.8114308 0.8293834 0.8293834 0.8399035
+[78] 0.8399035 0.8548426 0.8548426 0.8557959 0.8557959 0.9124625 0.9124625
+[85] 0.9588633 0.9588633 0.9723813 0.9723813</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] -0.4186152 -0.4186152 -0.2929377 -0.2929377 -0.2583940 -0.2583940
+  [7] -0.2456059 -0.2456059 -0.2127636 -0.2127636 -0.1929194 -0.1929194
+ [13] -0.1890258 -0.1890258 -0.1847567 -0.1847567 -0.1782198 -0.1782198
+ [19] -0.1778645 -0.1778645 -0.1773978 -0.1773978 -0.1722732 -0.1722732
+ [25] -0.1721530 -0.1721530 -0.1693641 -0.1693641 -0.1672846 -0.1672846
+ [31] -0.1642387 -0.1642387 -0.1625076 -0.1625076 -0.1590241 -0.1590241
+ [37] -0.1580511 -0.1580511 -0.1553508 -0.1553508 -0.1540961 -0.1540961
+ [43] -0.1517799 -0.1517799 -0.1505160 -0.1505160 -0.1481349 -0.1481349
+ [49] -0.1462150 -0.1462150 -0.1447026 -0.1447026 -0.1437591 -0.1437591
+ [55] -0.1435896 -0.1435896 -0.1435796 -0.1435796 -0.1429341 -0.1429341
+ [61] -0.1421681 -0.1421681 -0.1417327 -0.1417327 -0.1395254 -0.1395254
+ [67] -0.1377858 -0.1377858 -0.1363078 -0.1363078 -0.1325865 -0.1325865
+ [73] -0.1272807 -0.1272807 -0.1252862 -0.1252862 -0.1249318 -0.1249318
+ [79] -0.1218976 -0.1218976 -0.1210205 -0.1210205 -0.1203440 -0.1203440
+ [85] -0.1180839 -0.1180839 -0.1167773 -0.1167773 -0.1163429 -0.1163429
+ [91] -0.1158432 -0.1158432 -0.1158011 -0.1158011 -0.1118031 -0.1118031
+ [97] -0.1102404 -0.1102404 -0.1095904 -0.1095904 -0.1092183 -0.1092183
+[103] -0.1071290 -0.1071290 -0.1051057 -0.1051057 -0.1050824 -0.1050824
+[109] -0.1043368 -0.1043368 -0.1036808 -0.1036808 -0.1021334 -0.1021334
+[115] -0.1002895 -0.1002895 -0.1001104 -0.1001104</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

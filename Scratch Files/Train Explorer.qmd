@@ -1,0 +1,181 @@
+---
+title: "Train Data Exploration"
+format: html
+execute: 
+  warning: false
+  message: false
+  echo: false 
+---
+
+```{r}
+library(tidyverse)
+library(corrplot)
+library(pROC)
+library(caret)
+library(mgcv)
+```
+
+```{r}
+
+train <- read_csv("/Users/denisostroushko/Desktop/R/GitRepos/icr_kaggle_2023/01 Data/true train.csv")
+
+nrow(train)
+
+length(unique(train$Id))
+
+nrow(na.omit(train))
+# so we have like ~70 cases where at least one variable is missing. Time to use IMPUTATION! 
+
+table(train$Class)
+table(train$Class)/nrow(train)
+# fairly unbalanced problem, perhaps, need to some boosting method I reckon 
+
+```
+
+```{r}
+
+
+
+data.frame(
+  
+  variables = 
+    colnames(train), 
+  
+  n_na_vals = 
+    train %>% 
+      summarise(
+        t(across(everything(), ~ length(which(is.na(.)))))
+        
+      ) %>% unlist(), 
+  
+  n_unique_values = 
+    train %>% 
+      summarise(
+        t(across(everything(), ~ length(unique(.))))
+        
+      ) %>% unlist(), 
+  
+  variable_type = 
+    train %>% 
+      summarise(
+        t(across(everything(), ~class(.)))
+      )%>% unlist()
+    
+) %>% magrittr::set_rownames(NULL) %>% 
+  filter(!variables %in% c("Id", "EJ", "Class")) -> 
+  
+  metadata 
+
+#           View(metadata)
+
+```
+
+```{r}
+# one variable has 2 classes and no missing values 
+# make a C-table for this 
+
+with(train, table(EJ, Class))
+
+round(with(train, table(EJ, Class))/nrow(train), 4)
+
+train %>% 
+  group_by(EJ) %>% 
+  summarise(
+    n = n(), 
+    p = sum(Class)/n()
+  )
+
+# potentially a good predictor
+```
+
+# Loop over all variables and make densities by outcome class 
+
+```{r}
+
+for(i in 1:length(metadata$variables)){
+  
+  variale <- metadata$variables[i]
+  
+  print(ggplot(data = train, 
+         aes_string(
+           x = variale, 
+           group = "Class", 
+           color = "Class"
+         )) + geom_density() + 
+    ggtitle(paste0("Plot ", i, " of ", length(metadata$variables), ". Varible:", variale)))
+  
+  
+  print(ggplot(data = train, 
+         aes(
+           x = log(!!sym(variale) + 1), 
+           group = Class, 
+           color = Class
+         )) + geom_density() +
+    ggtitle(paste0("Log-Scale Plot ", i, " of ", length(metadata$variables), ". Varible:", variale)))
+  
+  
+  print(ggplot(data = train, 
+         aes(
+           x = log(!!sym(variale) + 1), 
+           y = Class
+         )) + geom_point() + geom_smooth(span = 1) + 
+          geom_smooth(method = "lm", color = "red", se = F) + 
+    ggtitle(paste0("Correlation Plot ", i, " of ", length(metadata$variables), ". Varible:", variale)))
+
+  
+}
+
+```
+<!--
+# Log Scale Plots 
+--> 
+```{r}
+#| eval: false
+
+for(i in 1:length(metadata$variables)){
+  
+  variale <- metadata$variables[i]
+  
+  print(ggplot(data = train, 
+         aes(
+           x = log(!!sym(variale) + 1), 
+           group = Class, 
+           color = Class
+         )) + geom_density() +
+    ggtitle(paste0("Log-Scale Plot ", i, " of ", length(metadata$variables), ". Varible:", variale)))
+
+}
+
+```
+
+<!--
+# Looking for correlations with Log transformed variables 
+--> 
+```{r}
+#| eval: false
+#| 
+for(i in 1:length(metadata$variables)){
+  
+  variale <- metadata$variables[i]
+  
+  print(ggplot(data = train, 
+         aes(
+           x = log(!!sym(variale) + 1), 
+           y = Class
+         )) + geom_point() + geom_smooth(span = 1) + 
+          geom_smooth(method = "lm", color = "red", se = F) + 
+    ggtitle(paste0("Correlation Plot ", i, " of ", length(metadata$variables), ". Varible:", variale)))
+
+}
+
+```
+
+# Correlation Matrix 
+
+```{r}
+
+cor(train %>% na.omit() %>% select(all_of(metadata$variables))) %>% unique() %>% sort() %>% .[.<1 & .>.5] 
+
+cor(train %>% na.omit() %>% select(all_of(metadata$variables))) %>% unique() %>% sort() %>% .[.>-1 & .< -.1] 
+```
+
