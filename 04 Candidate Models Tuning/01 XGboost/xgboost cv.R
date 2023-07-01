@@ -27,10 +27,6 @@ source("./03 Pipeline Scripts/01 Read and Prepare All Data.R")
               #     objective = "binary:logistic"
               #     )
 
-n_rounds_options = c(100, 200, 300, 400, 500)
-n_rounds_options = c(25, 50, 75, 100, 125)
-n_rounds_options = c(.01, .025, .05, .075, .1)
-
 CV_K <- 10
 N_imputes <- 50
 
@@ -73,6 +69,11 @@ fold_ids <- assign_k_fold_ids(data = full_train_f, number_K = 10) %>% select(fol
   set_names("")
 
 # NOW We can create the process of K-fold cross validation 
+
+
+##################################################
+# OPTION 1: ITERATE OVER IMPUTATIONS AND CV-FOLDS
+##################################################
 
 # results data
 
@@ -165,3 +166,107 @@ ggplot(data = results,
            group = Impute, 
            color = Impute)) + geom_line(size = 1, alpha = .5) + 
   scale_color_gradientn(colours = rainbow(5))
+
+####################################################################
+# OPTION 1 SUMMARY: IT APPEARS THAT 50 IMPUTATIONS CONVERGE! 
+####################################################################
+
+
+####################################################################
+# OPTION 2: ADD THREE MORE LOOPING VARIABLES FOR XGboost TRAINING
+####################################################################
+
+eta_learning_rate_options = c(0.01, 0.05, 0.1)
+max_depth_options = c(25, 75, 125)
+n_rounds_options = c(100, 300, 500)
+
+results2 = expand.grid(
+  Impute = c(1:N_imputes), 
+  Fold = c(1:CV_K), 
+  Eta = c(1:length(eta_learning_rate_options)),
+  Depth = c(1:length(max_depth_options)),
+  Rounds = c(1:length(n_rounds_options))
+) %>% 
+  mutate(auc = rep(NA, nrow(.)), 
+         log_loss = rep(NA, nrow(.))
+         )
+
+# start collecting the data 
+
+iteration_current = 0 
+time_start = Sys.time()
+
+for(E in 1:length(eta_learning_rate_options)){
+  for(D in 1:length(max_depth_options)){
+    for(R in 1:length(n_rounds_options)){
+      for( IMPUTES in 1:N_imputes){
+        
+        # use stored imputations to fill in missing values with ith set of missing values 
+        train_impute_iter_f <- 
+          pull_and_fill_ith_impute(
+            data_to_populate = train_impute_cols, 
+            columns_to_populate = cols_to_impute_train, 
+            all_imputations = imp1_train, 
+            imputed_values_set_to_pull = IMPUTES)
+        
+        complete_iter_train_f <- 
+          cbind(train_impute_iter_f, train_id_class_cols)
+        
+        full_iter_train_f <- 
+          create_smote_train(
+            input_train_data = complete_iter_train_f, 
+            smote_type = "alpha balance"
+            ) %>% select(-Alpha_numeric)
+        
+        full_iter_train_f$fold_id = fold_ids
+        
+        for(FOLD in 1:CV_K){
+          
+          print(paste0("Total iteration: ", iteration_current, 
+                       ". Using Learning Rate ", eta_learning_rate_options[E], 
+                       ". Using depth of trees ", max_depth_options[D], 
+                       ". Using rounds parameter ", n_rounds_options[R],
+                       ". Started iteration for", IMPUTES, "th Imputation set and ", FOLD, "th CV fold"))
+          
+          full_iter_train_f_cv_train <- full_iter_train_f %>% filter(fold_id != FOLD) %>% select(-fold_id)
+          full_iter_train_f_cv_test  <- full_iter_train_f %>% filter(fold_id == FOLD) %>% select(-fold_id)
+          
+          # train the model
+          cv_iter_model = 
+            xgboost(
+              verbose = 0, 
+              
+              data = full_iter_train_f_cv_train %>% select(-Class) %>% as.matrix(),
+              label = full_iter_train_f_cv_train %>% select(Class) %>% as.matrix(),
+              max.depth = max_depth_options[D],
+              eta = eta_learning_rate_options[E],
+              nthread = 2,
+              nrounds = n_rounds_options[R],
+              objective = "binary:logistic"
+              )
+          
+          full_iter_train_f_cv_test$predictions <- 
+            predict(cv_iter_model, full_iter_train_f_cv_test %>% select(-Class) %>% as.matrix())
+          
+          results2[results2$Impute == IMPUTES & 
+                    results2$Fold == FOLD,]$auc <- # Sroting AUC for this fold for this imputation set  
+            
+            auc(
+              roc(predictor = full_iter_train_f_cv_test$predictions, 
+                  response = full_iter_train_f_cv_test$Class)
+              )
+          
+          results2[results2$Impute == IMPUTES & 
+                    results2$Fold == FOLD,]$log_loss <- 
+            log_loss_estimation(data = full_iter_train_f_cv_test)
+          
+          iteration_current = iteration_current + 1 
+        }
+      }
+    }
+  }
+}
+time_end = Sys.time()
+
+print(paste0(round(time_start - time_end, 4), " seconds between start and end of CV"))
+
